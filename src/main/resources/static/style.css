@@ -1,0 +1,267 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    color: #696969;
+}
+a:hover{
+    color: #adad90;
+}
+p{
+    font-size: 18px;
+    line-height: 25px;
+}
+.container{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header -> menu */
+.menu ul li{
+    display: inline-block;
+    padding: 10px 20px;
+    text-transform: uppercase;
+}
+.menu ul li:last-child{
+    width: 50px;
+    height: 50px;
+    margin-left: 50px;
+    font-size: 40px;
+}
+.menu{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.menu img{
+    margin: 0 15px -32px;
+    width: 120px;
+    height:80px;
+}
+
+.menu img:hover{
+    cursor: context-menu;
+}
+
+/* Slice */
+.slice{
+    margin-top: 30px;
+    position: relative;
+}
+.slice .left{
+    width: 400px;
+    position: absolute;
+    left: 75px;
+    top: 130px;
+}
+.slice .left h2{
+    font-size: 80px;
+    color: #464444;
+}
+.left p{
+    margin-top: 20px;
+}
+.btn{
+    padding: 15px 55px;
+    background-color: #758bd2;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    margin-top: 20px;
+}
+.btn:hover{
+    background-color: #696969;
+}
+.slice .right{
+    position: absolute;
+    bottom: 70px;
+    right: 50px;
+}
+.hidden{
+    background-color: rgba(0, 0, 0, 0);
+    color: #adad90;
+    margin-right: 20px;
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
+}
+.hidden:hover{
+    color: #fff;
+}
+
+/* CONTENT */
+#title{
+    margin: 30px 0;
+    font-size: 50px;
+
+}
+.product{
+    width: 300px;
+    height: 600px;
+    float: left;
+    overflow: hidden;
+}
+.product-image{
+    margin: 0 10px;
+}
+.product img{
+    width: 300px;
+    height: 330px;
+    background-size: contain;
+    transform: scale(1.01) ;
+}
+.product img:hover{
+    transform: scale(1.0) ;
+}
+.product-name p{
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+.product-price p{
+    font-size: 30px;
+    font-weight: bold;
+    color: #80803e;
+    text-align: center;
+}
+.product-price p span{
+    font-size: 20px;
+}
+.buy{
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* FOOTER */
+footer{
+    clear: both;
+}
+.about{
+    width: 500px;
+    float: left;
+}
+.about #about_left img{
+    width: 100px;
+    height:80px;
+    margin-right: 20px;
+    margin-top: 15px;
+    float: left;
+}
+.about #about_right{
+    width: 250px;
+    color:  #696969;
+    float: left;
+}
+.contact{
+    width: 300px;
+    float: left;
+}
+.contact p{
+    margin-top: 10px;
+    color: #696969;
+}
+.contact span{
+    font-size: 22px;
+    font-weight: bold;
+}
+.link{
+    width: 400px;
+    float: left;
+}
+.link p{
+    color: #696969;
+    margin-top: 42px;
+    text-align: center;
+}
+
+/* DETAIL PRODUCT */
+.main{
+    width: 1000px;
+    height: 450px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.main h2{
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+.content{
+    margin-top: 20px;
+}
+.content .left{
+    width: 400px;
+    float: left;
+}
+.content .left img{
+    width: 320px;
+    height: 350px;
+    padding-left: 30px;
+}
+.content .right h3{
+    font-size: 28px;
+    padding-bottom: 5px;
+}
+.content .right p{
+    line-height: 40px;
+    padding-bottom: 10px;
+    font-size: 24px;
+}
+.content .right input{
+    font-size: 24px;
+    text-align: center;
+    width: 70px;
+}
+.content .right span{
+    color: red;
+    font-size: 22px;
+}
+
+/* SHOPPING CART */
+table{
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+table, th, tr,td{
+    text-align: center;
+    padding: 10px;
+    font-size: 24px;
+}
+table, tr{
+    border-left: #fff;
+    border-right: #fff;
+    border-collapse: collapse;
+}
+
+tr td img{
+    width: 180px;
+    height: 180px;
+    text-align: center;
+    padding: 20px 0;
+}
+tr td input{
+    font-size: 20px;
+    width: 70px;
+    margin: 0 20px;
+    text-align: center;
+}
+tr td button{
+    color: #fff;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    background-color: coral;
+    cursor: pointer;
+}
+tr td strong{
+    font-size: 20px;
+    font-weight: 800;
+}

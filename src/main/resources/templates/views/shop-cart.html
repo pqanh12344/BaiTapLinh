@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <script th:src="@{/jquery/jquery-3.5.1.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/font-awesome-4.7.0/css/font-awesome.css}">
+</head>
+<body>
+<div class="container">
+    <div th:replace="~{common/header}"></div>
+    <section>
+        <h2>GIỎ HÀNG</h2>
+        <table border="1">
+            <thead>
+            <tr>
+                <th style="width:20%">Ảnh sản phẩm</th>
+                <th style="width:30%">Tên sản phẩm</th>
+                <th style="width:10%">Giá</th>
+                <th style="width:8%">Số lượng</th>
+                <th style="width:20%" class="text-center">Thành tiền</th>
+                <th style="width:12%"> </th>
+            </tr>
+            </thead>
+            <tbody>
+                <div th:each="product : ${ListProduct}">
+                    <tr th:object="${product}" th:id="${product.id}+index">
+                        <td>
+                            <img th:src="@{/image/{image}(image=*{image})}" alt="">
+                        </td>
+                        <td th:text="*{name}"></td>
+                        <td th:text="*{price}"></td>
+                        <td><input type="number" th:id="*{id}" th:value="*{number}"></td>
+                        <td th:text="*{number*price}" th:id="*{id}+moneyOnItem"></td>
+                        <td><button th:id="*{id}+btn-delete"><i class="fa fa-trash-o"></i></button></td>
+                        <script>
+                            $('#[[${product.id}]]').click(()=>{
+                                let data = {};
+                                data["id"] = [[${product.id}]];
+                                data["number"] = $("#[[${product.id}]]").val();
+                                $.ajax({
+                                    url: '/AddToCart',
+                                    type: 'POST',
+                                    contentType: 'application/json',
+                                    data: JSON.stringify(data),
+                                    dataType: 'json',
+                                    success: result => {
+                                        console.log(result);
+                                        let moneyOnItem = 0;
+                                        let totalMoney = 0;
+                                        $(result).each(function (i,product){
+                                            if( [[${product.id}]] == product.id ) moneyOnItem = product.price*product.number;
+                                            if( product.number <= 0 ){
+                                                $("#"+product.id+"index").css("display","none");
+                                            }
+                                            totalMoney += product.price*product.number;
+                                        })
+                                        $("#[[${product.id}]]moneyOnItem").html(moneyOnItem);
+                                        $("#totalMoney").html(totalMoney);
+                                    },
+                                    error: function(result){
+                                        console.log(result);
+                                        alert("Không được");
+                                    }
+                                });
+                            })
+                            $('#[[${product.id}]]btn-delete').click(()=>{
+                                let data = {};
+                                data["id"] = [[${product.id}]];
+                                data["number"] = 0;
+                                $.ajax({
+                                    url: '/AddToCart',
+                                    type: 'POST',
+                                    contentType: 'application/json',
+                                    data: JSON.stringify(data),
+                                    dataType: 'json',
+                                    success: result => {
+                                        console.log(result);
+                                        let totalMoney = 0;
+                                        $(result).each(function (i,product){
+                                            totalMoney += product.price*product.number;
+                                        })
+                                        $("#totalMoney").html(totalMoney);
+                                        $("#[[${product.id}]]index").css("display","none");
+                                    },
+                                    error: function(result){
+                                        console.log(result);
+                                        alert("Không được");
+                                    }
+                                });
+                            })
+                        </script>
+                    </tr>
+                </div>
+                <tr>
+                    <td colspan="3"></td>
+                    <td colspan="3">Tổng tiền: <strong th:text="${SumNumber}" id="totalMoney"></strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+    <div th:replace="~{common/footer}"></div>
+</div>
+</body>
+</html>
